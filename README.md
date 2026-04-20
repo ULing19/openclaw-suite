@@ -18,6 +18,7 @@ This repository is a cleaned public subset of a real OpenClaw workspace. Private
 - Multimodal message understanding for images, audio, PDFs, Office files, and text files
 - AI-assisted IMAP mail reply workflow
 - Cross-channel image delivery for Telegram, Feishu, QQ, and WeChat
+- Reference OpenClaw Web app merged as a sanitized sub-application
 - OpenClaw-oriented skill docs and deployment examples
 - Additional OpenClaw integration notes and OneBot plugin references
 
@@ -35,6 +36,8 @@ This repository is a cleaned public subset of a real OpenClaw workspace. Private
   Lightweight package metadata and module-based CLI entrypoint.
 - `skills/`
   OpenClaw skill docs for multimodal messaging, image generation delivery, and OneBot integration.
+- `apps/openclaw-web/`
+  Sanitized reference web application merged from the standalone `openclaw-web` repository.
 - `deploy/`
   Example environment and `systemd` assets for scheduled mail-agent deployment.
 - `docs/`
@@ -45,6 +48,7 @@ This repository is a cleaned public subset of a real OpenClaw workspace. Private
 ```text
 .
 ├── assets/
+├── apps/
 ├── deploy/
 ├── docs/
 ├── image_sender.py
@@ -116,6 +120,7 @@ See also:
 
 - [Chinese introduction](README.zh-CN.md)
 - [OpenClaw integration notes](docs/OPENCLAW_INTEGRATION.md)
+- [OpenClaw Web reference app](apps/openclaw-web/README.md)
 - [Deployment examples](deploy/)
 
 ## Usage
@@ -182,6 +187,7 @@ If you want to reuse the scripts outside OpenClaw, expect to patch paths, config
 
 - [Chinese introduction](README.zh-CN.md)
 - [OpenClaw integration notes](docs/OPENCLAW_INTEGRATION.md)
+- [OpenClaw Web reference app](apps/openclaw-web/README.md)
 - [OneBot skill](skills/openclaw-onebot/SKILL.md)
 - [Deployment examples](deploy/)
 

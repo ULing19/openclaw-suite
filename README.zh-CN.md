@@ -16,6 +16,7 @@
 - 处理图片、语音、PDF、Office、文本文件等多模态输入
 - 轮询 IMAP 邮箱并生成 AI 自动回复
 - 把生成图片发送到 Telegram、飞书、QQ、微信等渠道
+- 合并一个清洗后的 OpenClaw Web 参考应用
 - 给 OpenClaw 技能和通道集成提供现成参考
 - 提供 OneBot / systemd / 环境变量示例
 
@@ -33,6 +34,8 @@
   提供基础包结构和模块化 CLI 入口。
 - `skills/`
   `multimodal-messaging`、`image-gen-deliver`、`openclaw-onebot` 等技能文档。
+- `apps/openclaw-web/`
+  从独立仓库清洗并合并进来的 Web 参考应用。
 - `deploy/`
   部署时可直接参考的 `.env` 和 `systemd` 示例。
 - `docs/`
@@ -43,6 +46,7 @@
 ```text
 .
 ├── assets/
+├── apps/
 ├── deploy/
 ├── docs/
 ├── image_sender.py
@@ -168,6 +172,7 @@ python -m openclaw_multimodal_toolkit.cli image-sender /path/to/image.jpg telegr
 ## 额外文档
 
 - [OpenClaw 集成说明](docs/OPENCLAW_INTEGRATION.md)
+- [OpenClaw Web 参考应用](apps/openclaw-web/README.md)
 - [OneBot 技能文档](skills/openclaw-onebot/SKILL.md)
 - [systemd / env 部署示例](deploy/)
 
