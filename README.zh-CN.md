@@ -1,4 +1,4 @@
-# OpenClaw Multimodal Toolkit
+# OpenClaw Suite
 
 [English](README.md)
 
@@ -6,112 +6,74 @@
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-0f766e)
+![Monorepo](https://img.shields.io/badge/repo-monorepo-334155)
 ![OpenClaw](https://img.shields.io/badge/OpenClaw-integrated-c0841a)
-![Status](https://img.shields.io/badge/status-practical%20toolkit-334155)
 
-这是一个面向 OpenClaw 生态的多模态工具仓库，整理了实际工作区中已经跑通的一部分脚本、技能说明和部署示例，并在公开前移除了私人记忆、日志、状态文件和真实账号标识。
+这是一个围绕 OpenClaw 生态整理出来的实战型 monorepo，里面同时放了多模态脚本、邮件自动化、渠道发送工具、技能文档、部署示例，以及一个清洗后的 Web 参考应用。
 
-## 仓库能做什么
+这个仓库最初来自真实工作区的公开化子集，发布前已经移除了私人记忆、日志、真实账号标识和本地状态文件，之后又进一步整理成总仓结构。
 
-- 处理图片、语音、PDF、Office、文本文件等多模态输入
-- 轮询 IMAP 邮箱并生成 AI 自动回复
-- 把生成图片发送到 Telegram、飞书、QQ、微信等渠道
-- 合并一个清洗后的 OpenClaw Web 参考应用
-- 给 OpenClaw 技能和通道集成提供现成参考
-- 提供 OneBot / systemd / 环境变量示例
+## 仓库里有什么
 
-## 主要内容
+- 多模态消息处理脚本
+- AI 邮件自动回复工具
+- Telegram / 飞书 / QQ / 微信等渠道的媒体发送辅助
+- OpenClaw 相关 skills 和集成说明
+- `openclaw-web` 的清洗版参考应用
+- `systemd` / `.env` / 部署示例
 
-- `multimodal-agent.py`
-  兼容入口，实际逻辑在 `scripts/` 中。
-- `mail-agent.py`
-  兼容入口，实际逻辑在 `scripts/` 中。
-- `image_sender.py`
-  兼容入口，实际逻辑在 `scripts/` 中。
-- `scripts/`
-  存放真实可执行脚本实现。
-- `src/openclaw_multimodal_toolkit/`
-  提供基础包结构和模块化 CLI 入口。
-- `skills/`
-  `multimodal-messaging`、`image-gen-deliver`、`openclaw-onebot` 等技能文档。
-- `apps/openclaw-web/`
-  从独立仓库清洗并合并进来的 Web 参考应用。
-- `deploy/`
-  部署时可直接参考的 `.env` 和 `systemd` 示例。
-- `docs/`
-  OpenClaw 集成说明和配置建议。
-
-## 目录结构
+## Monorepo 结构
 
 ```text
 .
-├── assets/
 ├── apps/
-├── deploy/
-├── docs/
-├── image_sender.py
-├── mail-agent.py
-├── multimodal-agent.py
+│   └── openclaw-web/          # 清洗后的 Web 参考应用
+├── assets/                    # 仓库级视觉资源
+├── deploy/                    # env / systemd 示例
+├── docs/                      # 集成说明
+├── scripts/                   # 真实脚本实现
+├── skills/                    # OpenClaw 技能文档
+├── src/                       # 轻量包结构和 CLI
+├── image_sender.py            # 兼容入口
+├── mail-agent.py              # 兼容入口
+├── multimodal-agent.py        # 兼容入口
 ├── pyproject.toml
-├── requirements.txt
-├── scripts/
-├── src/
-└── skills/
+└── requirements.txt
 ```
 
-## 依赖要求
+## 主要模块
 
-- Python 3.10+
-- 已安装并可执行的 OpenClaw CLI
-- `uvx minimax-coding-plan-mcp`
-- Tesseract OCR
-- Poppler（给 `pdf2image` 用）
-- 可选：本地 `faster-whisper` 模型缓存
+| 模块 | 作用 |
+|------|------|
+| `scripts/` | 多模态处理、邮件自动化、图片发送等脚本 |
+| `src/openclaw_multimodal_toolkit/` | 轻量 Python 包和模块化 CLI |
+| `skills/` | `multimodal-messaging`、`image-gen-deliver`、`openclaw-onebot` 等技能文档 |
+| `apps/openclaw-web/` | FastAPI Web 参考应用，包含任务模式和多模态处理 |
+| `deploy/` | 环境变量和 `systemd` 示例 |
+| `docs/` | Monorepo 级别的集成说明 |
 
-## 安装方式
+## 快速开始
 
-安装 Python 依赖：
+安装依赖：
 
 ```bash
 pip install -r requirements.txt
-```
-
-如果你希望按包方式使用，也可以：
-
-```bash
 pip install -e .
 ```
 
-复制环境变量模板：
+如果你要用根目录下这些工具脚本：
 
 ```bash
 cp .env.example .env
 ```
 
-然后把实际配置填进去。
+如果你要跑 Web 应用：
 
-## 关键环境变量
-
-- `MINIMAX_API_KEY`
-- `MINIMAX_API_HOST`
-- `MINIMAX_URL`
-- `MINIMAX_MODEL`
-- `MAIL_AGENT_EMAIL_ACCOUNT`
-- `MAIL_AGENT_EMAIL_PASSWORD`
-- `MAIL_AGENT_TOKEN`
-- `BRAVE_API_KEY`
-- `MAIL_AGENT_NOTIFY_TARGETS`
-
-`MAIL_AGENT_NOTIFY_TARGETS` 采用 JSON 数组，例如：
-
-```json
-[
-  {"channel":"telegram","target":"telegram:<user_id>"},
-  {"channel":"feishu","target":"<open_id>"}
-]
+```bash
+cp apps/openclaw-web/config_example.env apps/openclaw-web/.env
 ```
 
-## 快速示例
+## 常见用法
 
 语音转写：
 
@@ -125,56 +87,48 @@ python3 multimodal-agent.py voice /path/to/audio.mp3
 python3 multimodal-agent.py file /path/to/file.pdf
 ```
 
-自然语言修改文件：
-
-```bash
-python3 multimodal-agent.py modify /path/to/file.txt "把标题改成季度总结"
-```
-
 发送图片：
 
 ```bash
 python3 image_sender.py /path/to/image.jpg telegram <telegram_user_id> "说明文字"
 ```
 
-模块化 CLI 方式：
+模块化 CLI：
 
 ```bash
 python -m openclaw_multimodal_toolkit.cli multimodal voice /path/to/audio.mp3
 python -m openclaw_multimodal_toolkit.cli image-sender /path/to/image.jpg telegram <telegram_user_id>
 ```
 
+运行 Web 应用：
+
+```bash
+cd apps/openclaw-web
+python app.py
+```
+
 ## 仓库定位
 
-这个仓库更像“实战型工具包”，不是通用 SDK，也不是已经完全产品化的框架。
+这个仓库不是追求高度抽象的框架，而是偏“能直接拿来改”的实战型总仓。
 
-它最适合：
+它更适合：
 
-- 想快速复用 OpenClaw 多模态处理思路的人
-- 想直接改现成脚本和部署示例的人
-- 想参考技能文档和通道整合方式的人
+- 希望直接复用 OpenClaw 工作流的人
+- 需要多渠道、多模态自动化的人
+- 想同时保留脚本、Web 参考应用、部署文档和技能说明的人
 
-## OpenClaw 绑定点
-
-这个仓库不是完全通用的 Python 库，它默认依赖一些 OpenClaw 约定：
-
-- 本地配置路径在 `~/.openclaw/`
-- 通过 `openclaw message send` 发消息
-- 通过 `uvx minimax-coding-plan-mcp` 调 MiniMax MCP
-- 渠道格式和插件行为遵循 OpenClaw 生态
-
-如果你要拿去做非 OpenClaw 项目，通常需要改：
-
-- 配置读取逻辑
-- 消息发送适配层
-- 路径和部署方式
-
-## 额外文档
+## 重点入口
 
 - [OpenClaw 集成说明](docs/OPENCLAW_INTEGRATION.md)
 - [OpenClaw Web 参考应用](apps/openclaw-web/README.md)
+- [OpenClaw Web 部署文档](apps/openclaw-web/DEPLOYMENT.md)
 - [OneBot 技能文档](skills/openclaw-onebot/SKILL.md)
-- [systemd / env 部署示例](deploy/)
+
+## 安全说明
+
+- 公开版不包含 secrets、记忆快照、日志和运行时数据库。
+- 通知目标改成环境变量，不再硬编码个人账号。
+- 合并进来的 Web app 已经做过清洗：硬编码 key、个人品牌、绝对生产路径和运行时垃圾都已去除。
 
 ## 许可证
 

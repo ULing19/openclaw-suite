@@ -1,69 +1,131 @@
-# OpenClaw Web Reference App
+# OpenClaw Web
 
 [中文说明](#中文) | [English](#english)
+
+![OpenClaw Web preview](assets/web-ui-preview.svg)
+
+![FastAPI](https://img.shields.io/badge/FastAPI-app-059669)
+![Task Mode](https://img.shields.io/badge/task%20mode-enabled-4f46e5)
+![Multimodal](https://img.shields.io/badge/multimodal-integrated-c0841a)
 
 ---
 
 ## 中文
 
-这是从 `openclaw-web` 仓库中清洗并并入的一个参考 Web 应用子目录。
+`apps/openclaw-web` 是并入 `OpenClaw Suite` 的一个清洗版 Web 参考应用。
 
-它的定位不是当前主仓库的“核心库”，而是：
+它展示了一个浏览器侧 OpenClaw UI 可以怎么组织：
 
-- 一个可运行的 OpenClaw Web UI 参考实现
-- 展示任务模式、多媒体处理、游客会话和文件下载链路
-- 方便把多模态工具与 Web 界面整合在一起
+- 普通对话
+- 任务模式
+- 游客会话
+- 多模态文件上传
+- 工件下载
 
-### 当前做过的公开化处理
+### 功能表
+
+| 功能 | 状态 | 说明 |
+|------|------|------|
+| AI 对话 | 可用 | 基于 FastAPI 的 Web 聊天界面 |
+| 任务模式 | 可用 | 支持后台任务轮询与结果回填 |
+| 多模态处理 | 可用 | 图片、语音、文件分析链路 |
+| 游客模式 | 可用 | 支持临时 token 和自动清理 |
+| 工件下载 | 可用 | 任务结果可挂成下载链接 |
+| 图像生成接入 | 可选 | 依赖外部图生/桥接能力 |
+
+### 当前公开化处理
 
 - 移除了硬编码 API key
 - 把绝对路径改成环境变量或相对路径
-- 去掉数据库、日志、缓存、备份页面等运行时垃圾
-- 把页面标题中的个人标识改成通用名称
+- 去掉数据库、日志、缓存、备份 HTML
+- 把个人品牌标题改成通用名称 `OpenClaw Web`
 
-### 关键环境变量
+### 目录概览
 
-- `MINIMAX_API_KEY`
-- `VIVIAI_API_KEY`
-- `AIPAIBOX_API_KEY`
-- `OPENCLAW_WEB_TOKEN_SECRET`
-- `OPENCLAW_WEB_DATA_DIR`
-- `OPENCLAW_WEB_ARTIFACTS_DIR`
-- `OPENCLAW_WEB_STATIC_DIR`
+```text
+apps/openclaw-web/
+├── app.py
+├── task_worker.py
+├── task_store.py
+├── unified_bridge_core.py
+├── static/
+├── assets/
+├── config_example.env
+└── DEPLOYMENT.md
+```
 
-### 说明
+### 快速启动
 
-这部分代码仍然更像“参考应用”而不是成熟框架，适合：
+```bash
+cd apps/openclaw-web
+cp config_example.env .env
+python app.py
+```
 
-- 继续单独部署
-- 当作子应用进行二次开发
-- 拆分其中的任务模式 / Web UI / bridge 逻辑
+更完整的部署步骤见：
+
+- [DEPLOYMENT.md](DEPLOYMENT.md)
+
+### 适合用途
+
+- 当作 OpenClaw Web 界面的参考实现
+- 拆分任务模式 / Web UI / bridge 逻辑
+- 作为更完整产品化项目前的中间层
 
 ---
 
 ## English
 
-This directory is a sanitized reference web app merged from the `openclaw-web` repository.
+`apps/openclaw-web` is a sanitized reference web app merged into `OpenClaw Suite`.
 
-It is not positioned as the core library of this repository. Instead, it serves as:
+It shows how a browser-facing OpenClaw UI can be structured around:
 
-- a runnable OpenClaw Web UI reference
-- an example of task mode, multimodal handling, guest sessions, and artifact downloads
-- a practical bridge between the toolkit and a browser-based interface
+- normal chat
+- task mode
+- guest sessions
+- multimodal uploads
+- downloadable artifacts
 
-### Public-safety cleanup already applied
+### Feature Table
+
+| Feature | Status | Notes |
+|--------|--------|-------|
+| AI chat | Available | FastAPI-based browser UI |
+| Task mode | Available | Background task polling and result backfill |
+| Multimodal handling | Available | Image, audio, and file workflows |
+| Guest mode | Available | Temporary tokens and cleanup flow |
+| Artifact download | Available | Task outputs exposed as downloadable files |
+| Image generation bridge | Optional | Depends on external image backend/bridge |
+
+### Public-safety cleanup applied
 
 - removed hardcoded API keys
-- replaced absolute server paths with environment-driven or relative paths
+- replaced absolute production paths with environment-driven or relative paths
 - excluded databases, logs, caches, and backup HTML files
-- replaced personal branding with a generic app title
+- replaced personal branding with the generic app title `OpenClaw Web`
 
-### Key environment variables
+### Layout
 
-- `MINIMAX_API_KEY`
-- `VIVIAI_API_KEY`
-- `AIPAIBOX_API_KEY`
-- `OPENCLAW_WEB_TOKEN_SECRET`
-- `OPENCLAW_WEB_DATA_DIR`
-- `OPENCLAW_WEB_ARTIFACTS_DIR`
-- `OPENCLAW_WEB_STATIC_DIR`
+```text
+apps/openclaw-web/
+├── app.py
+├── task_worker.py
+├── task_store.py
+├── unified_bridge_core.py
+├── static/
+├── assets/
+├── config_example.env
+└── DEPLOYMENT.md
+```
+
+### Quick Start
+
+```bash
+cd apps/openclaw-web
+cp config_example.env .env
+python app.py
+```
+
+See also:
+
+- [DEPLOYMENT.md](DEPLOYMENT.md)
