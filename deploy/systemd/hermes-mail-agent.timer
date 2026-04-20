@@ -1,0 +1,12 @@
+[Unit]
+Description=Run OpenClaw Multimodal Mail Agent every 5 minutes
+PartOf=hermes-mail-agent.service
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=5min
+AccuracySec=1us
+RandomizedDelaySec=30
+
+[Install]
+WantedBy=timers.target
