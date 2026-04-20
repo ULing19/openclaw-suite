@@ -7,62 +7,64 @@
 [![Language](https://img.shields.io/github/languages/top/ULing19/openclaw-suite?style=flat-square)](https://github.com/ULing19/openclaw-suite)
 [![Last Commit](https://img.shields.io/github/last-commit/ULing19/openclaw-suite?style=flat-square)](https://github.com/ULing19/openclaw-suite/commits)
 
-## 🎯 About
+## 📖 About
 
-Personal tech monorepo spanning **integrated circuits**, **embedded systems**, **mathematical & statistical modeling**, **AI workflow automation**, and **full-stack deployment** — built and maintained by **Hong Zhang (優伶拾酒)**.
+Multimodal AI tooling monorepo built on **OpenClaw**, covering:
 
-**Key achievements (2025):**
-- 🏅 MCM M Award (Mathematical Contest in Modeling)
-- 🥉 Embedded Chip & System Design — National 3rd Prize, Eastern Regional 1st Prize
-- 📄 Paper published at **ICISCAE 2025** — [DOI: 10.1109/ICISCAE66104.2025.11307355](https://doi.org/10.1109/ICISCAE66104.2025.11307355)
-
-## 🧭 Navigation
-
-| Section | Description |
-|---------|-------------|
-| [Personal Site](https://hermes.uling19.com) | Main tech profile with project matrix, research, and AI assistant |
-| [Projects](https://hermes.uling19.com/pages/projects.html) | Six方向项目矩阵 — System / AI / Embedded / Modeling / IC / Growth |
-| [Research](https://hermes.uling19.com/pages/research.html) | Papers, awards timeline, DOI links |
-| [Contact](https://hermes.uling19.com/pages/contact.html) | Email · GitHub · AI Navigation guide |
+- 🤖 Agent skills & task automation (Python, Node.js)
+- 💬 Multi-channel integrations (QQ, Telegram, Feishu, WeChat, Discord, Signal)
+- 🖼️ Multimodal processing (image understanding, voice/STT, file parsing, OCR)
+- 🌐 Web apps & deployment (FastAPI, Docker, Nginx, Linux server)
+- 📊 Task queue & persistence (SQLite, scheduled & on-demand jobs)
 
 ## 🛠️ Tech Stack
 
-**AI & Automation**
-- OpenClaw (agent framework, multimodal)
-- Hermes (bridge + AI routing)
-- Whisper (local STT)
-- FastAPI + SQLite (task queue & API)
-- QQ Bot / Telegram Bot / Feishu / WeChat (channel integrations)
-- OneBot 11 (QQ protocol)
+| Category | Technologies |
+|----------|-------------|
+| **AI Framework** | OpenClaw, Hermes Bridge |
+| **Voice/Image** | Whisper (STT), MiniMax VL/TTS, multimodal APIs |
+| **Bot Protocols** | OneBot 11 (QQ), Telegram Bot API, Feishu, WeChat |
+| **Backend** | FastAPI, Python, SQLite |
+| **Frontend** | Vanilla JS, HTML/CSS |
+| **Infra** | Docker Compose, Nginx, Node.js, Linux |
+| **Channels** | QQ Bot · Telegram · Feishu · WeChat · Discord · Signal |
 
-**Infrastructure**
-- Nginx (reverse proxy, HTTPS)
-- Docker & Docker Compose (service orchestration)
-- Node.js (runtime for OpenClaw)
-- Linux server management
-
-**Languages**
-- Python (primary — backend, automation, skills)
-- JavaScript/TypeScript (frontend, bot plugins)
-- Shell (deployment scripts)
-
-## 📁 Project Structure
+## 📁 Structure
 
 ```
 openclaw-suite/
-├── skills/            # OpenClaw agent skills
-├── deployments/       # Production deployment configs & scripts
-│   └── youling-profile-site/   # Personal tech profile site
-├── backend/           # Backend services (task queue, API)
+├── skills/              # OpenClaw agent skills
+├── deployments/         # Deployment configs & scripts
+│   └── youling-profile-site/   # Profile site (standalone HTML)
+├── backend/             # Backend services (FastAPI, task queue)
 └── ...
 ```
 
-## 📬 Contact
+## 🚀 Quick Start
 
-- **Email**: [youlingshijiu@uling19.com](mailto:youlingshijiu@uling19.com)
-- **GitHub**: [github.com/ULing19](https://github.com/ULing19)
-- **Personal Site**: [hermes.uling19.com](https://hermes.uling19.com)
+```bash
+# Clone the repo
+git clone https://github.com/ULing19/openclaw-suite.git
+cd openclaw-suite
 
----
+# View deployment docs
+cat deployments/DEPLOY.md
 
-*This repo mirrors the open-source tooling layer behind [hermes.uling19.com](https://hermes.uling19.com).*
+# Check skill implementations
+ls skills/
+```
+
+## 📂 Key Modules
+
+### Skills (`skills/`)
+Reusable OpenClaw agent skills for specialized tasks — STT, image gen, web search, etc.
+
+### Deployments (`deployments/`)
+Production-ready configs: Nginx routing, Docker Compose, HTTPS setup, and profile site.
+
+### Backend (`backend/`)
+FastAPI-based task worker and queue system with SQLite persistence.
+
+## 📄 License
+
+MIT — feel free to use, modify, and distribute.
