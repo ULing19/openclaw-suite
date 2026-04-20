@@ -1,137 +1,68 @@
-# OpenClaw Suite
+# openclaw-suite
 
-[中文介绍](README.zh-CN.md)
+> OpenClaw monorepo for multimodal tooling, web apps, skills, and deployment references
 
-![cover](assets/cover.svg)
+[![Open Source](https://img.shields.io/badge/Open%20Source-MIT-green?style=flat-square)](https://github.com/ULing19/openclaw-suite)
+[![Stars](https://img.shields.io/github/stars/ULing19/openclaw-suite?style=flat-square)](https://github.com/ULing19/openclaw-suite/stargazers)
+[![Language](https://img.shields.io/github/languages/top/ULing19/openclaw-suite?style=flat-square)](https://github.com/ULing19/openclaw-suite)
+[![Last Commit](https://img.shields.io/github/last-commit/ULing19/openclaw-suite?style=flat-square)](https://github.com/ULing19/openclaw-suite/commits)
 
-![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-0f766e)
-![Monorepo](https://img.shields.io/badge/repo-monorepo-334155)
-![OpenClaw](https://img.shields.io/badge/OpenClaw-integrated-c0841a)
+## 🎯 About
 
-OpenClaw Suite is a practical monorepo for OpenClaw-oriented automation, multimodal tooling, web interfaces, deployment snippets, and skill references.
+Personal tech monorepo spanning **integrated circuits**, **embedded systems**, **mathematical & statistical modeling**, **AI workflow automation**, and **full-stack deployment** — built and maintained by **Hong Zhang (優伶拾酒)**.
 
-This repository started from a cleaned public subset of a real OpenClaw workspace and has been reorganized into a broader monorepo structure. Private memory files, logs, account identifiers, and local state were removed before publishing.
+**Key achievements (2025):**
+- 🏅 MCM M Award (Mathematical Contest in Modeling)
+- 🥉 Embedded Chip & System Design — National 3rd Prize, Eastern Regional 1st Prize
+- 📄 Paper published at **ICISCAE 2025** — [DOI: 10.1109/ICISCAE66104.2025.11307355](https://doi.org/10.1109/ICISCAE66104.2025.11307355)
 
-## What Lives Here
+## 🧭 Navigation
 
-- multimodal message tooling across chat channels
-- AI-assisted mail automation
-- cross-channel media delivery
-- OpenClaw skills and integration references
-- a sanitized OpenClaw Web reference application
-- deployment examples and environment templates
+| Section | Description |
+|---------|-------------|
+| [Personal Site](https://hermes.uling19.com) | Main tech profile with project matrix, research, and AI assistant |
+| [Projects](https://hermes.uling19.com/pages/projects.html) | Six方向项目矩阵 — System / AI / Embedded / Modeling / IC / Growth |
+| [Research](https://hermes.uling19.com/pages/research.html) | Papers, awards timeline, DOI links |
+| [Contact](https://hermes.uling19.com/pages/contact.html) | Email · GitHub · AI Navigation guide |
 
-## Monorepo Layout
+## 🛠️ Tech Stack
 
-```text
-.
-├── apps/
-│   └── openclaw-web/          # Sanitized reference web application
-├── assets/                    # Repository-level artwork
-├── deploy/                    # Example env/systemd assets
-├── docs/                      # Integration notes and supporting docs
-├── scripts/                   # Actual script implementations
-├── skills/                    # OpenClaw skill references
-├── src/                       # Lightweight Python package metadata/CLI
-├── image_sender.py            # Compatibility wrapper
-├── mail-agent.py              # Compatibility wrapper
-├── multimodal-agent.py        # Compatibility wrapper
-├── pyproject.toml
-└── requirements.txt
+**AI & Automation**
+- OpenClaw (agent framework, multimodal)
+- Hermes (bridge + AI routing)
+- Whisper (local STT)
+- FastAPI + SQLite (task queue & API)
+- QQ Bot / Telegram Bot / Feishu / WeChat (channel integrations)
+- OneBot 11 (QQ protocol)
+
+**Infrastructure**
+- Nginx (reverse proxy, HTTPS)
+- Docker & Docker Compose (service orchestration)
+- Node.js (runtime for OpenClaw)
+- Linux server management
+
+**Languages**
+- Python (primary — backend, automation, skills)
+- JavaScript/TypeScript (frontend, bot plugins)
+- Shell (deployment scripts)
+
+## 📁 Project Structure
+
+```
+openclaw-suite/
+├── skills/            # OpenClaw agent skills
+├── deployments/       # Production deployment configs & scripts
+│   └── youling-profile-site/   # Personal tech profile site
+├── backend/           # Backend services (task queue, API)
+└── ...
 ```
 
-## Main Components
+## 📬 Contact
 
-| Area | Purpose |
-|------|---------|
-| `scripts/` | Runnable utilities for multimodal processing, email automation, and media delivery |
-| `src/openclaw_multimodal_toolkit/` | Lightweight Python package and module-based CLI |
-| `skills/` | OpenClaw-focused skill docs such as multimodal messaging, image delivery, and OneBot integration |
-| `apps/openclaw-web/` | Reference FastAPI-based web UI with task mode and multimodal handling |
-| `deploy/` | Example environment and `systemd` assets |
-| `docs/` | Monorepo-level integration notes |
+- **Email**: [youlingshijiu@uling19.com](mailto:youlingshijiu@uling19.com)
+- **GitHub**: [github.com/ULing19](https://github.com/ULing19)
+- **Personal Site**: [hermes.uling19.com](https://hermes.uling19.com)
 
-## Quick Start
+---
 
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-pip install -e .
-```
-
-Copy the root environment template when using the toolkit scripts:
-
-```bash
-cp .env.example .env
-```
-
-For the web app, use the app-specific template:
-
-```bash
-cp apps/openclaw-web/config_example.env apps/openclaw-web/.env
-```
-
-## Typical Usage
-
-Transcribe voice:
-
-```bash
-python3 multimodal-agent.py voice /path/to/audio.mp3
-```
-
-Process a file:
-
-```bash
-python3 multimodal-agent.py file /path/to/file.pdf
-```
-
-Deliver an image:
-
-```bash
-python3 image_sender.py /path/to/image.jpg telegram <telegram_user_id> "caption"
-```
-
-Module-based CLI:
-
-```bash
-python -m openclaw_multimodal_toolkit.cli multimodal voice /path/to/audio.mp3
-python -m openclaw_multimodal_toolkit.cli image-sender /path/to/image.jpg telegram <telegram_user_id>
-```
-
-Run the web app:
-
-```bash
-cd apps/openclaw-web
-python app.py
-```
-
-## Repository Positioning
-
-This is intentionally a practical monorepo, not a highly abstract framework.
-
-It is best suited for:
-
-- OpenClaw users who want working reference code
-- people building channel-aware multimodal automations
-- developers who want reusable deployment snippets and integration examples
-- teams that want one place for scripts, app references, and skill docs
-
-## Important Sections
-
-- [Chinese introduction](README.zh-CN.md)
-- [OpenClaw integration notes](docs/OPENCLAW_INTEGRATION.md)
-- [OpenClaw Web reference app](apps/openclaw-web/README.md)
-- [OpenClaw Web deployment guide](apps/openclaw-web/DEPLOYMENT.md)
-- [OneBot skill](skills/openclaw-onebot/SKILL.md)
-
-## Security Notes
-
-- This public version excludes secrets, memory snapshots, queue data, and logs.
-- Notification targets are configured through environment variables instead of hardcoded personal IDs.
-- The merged web app was sanitized before inclusion: hardcoded keys, personal branding, absolute production paths, and runtime artifacts were removed.
-
-## License
-
-[MIT](LICENSE)
+*This repo mirrors the open-source tooling layer behind [hermes.uling19.com](https://hermes.uling19.com).*
