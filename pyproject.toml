@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openclaw-multimodal-toolkit"
+version = "0.1.0"
+description = "OpenClaw utilities for multimodal messaging, AI mail reply, and cross-channel media delivery"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "ULing19" }
+]
+dependencies = [
+  "requests",
+  "Pillow",
+  "pytesseract",
+  "pdf2image",
+  "PyPDF2",
+  "faster-whisper",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="OpenClaw Multimodal Toolkit cover">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#081a1f"/>
+      <stop offset="55%" stop-color="#103746"/>
+      <stop offset="100%" stop-color="#d4a24c"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" x2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <circle cx="1040" cy="118" r="150" fill="#ffffff" fill-opacity="0.08"/>
+  <circle cx="1108" cy="184" r="72" fill="#ffffff" fill-opacity="0.08"/>
+  <rect x="72" y="84" width="1136" height="472" rx="28" fill="url(#panel)" stroke="#ffffff" stroke-opacity="0.14"/>
+  <text x="112" y="196" fill="#f7f2e8" font-family="Georgia, 'Noto Serif SC', serif" font-size="62" font-weight="700">OpenClaw Multimodal Toolkit</text>
+  <text x="114" y="252" fill="#d9ecef" font-family="'Trebuchet MS', 'Noto Sans SC', sans-serif" font-size="28">Multimodal messaging, AI mail automation, and cross-channel media delivery</text>
+  <g fill="#f4efe4" font-family="'Trebuchet MS', 'Noto Sans SC', sans-serif" font-size="26">
+    <text x="116" y="352">Image understanding</text>
+    <text x="116" y="398">Voice transcription</text>
+    <text x="116" y="444">PDF and Office extraction</text>
+    <text x="116" y="490">Telegram · Feishu · QQ · WeChat</text>
+  </g>
+  <g fill="#ffe2aa">
+    <rect x="768" y="308" width="332" height="58" rx="16" fill="#0a2430"/>
+    <rect x="798" y="332" width="84" height="10" rx="5"/>
+    <rect x="896" y="332" width="164" height="10" rx="5" fill-opacity="0.68"/>
+    <rect x="768" y="386" width="384" height="58" rx="16" fill="#0a2430"/>
+    <rect x="798" y="410" width="96" height="10" rx="5"/>
+    <rect x="908" y="410" width="202" height="10" rx="5" fill-opacity="0.68"/>
+  </g>
+</svg>

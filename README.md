@@ -2,6 +2,13 @@
 
 [中文介绍](README.zh-CN.md)
 
+![cover](assets/cover.svg)
+
+![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-0f766e)
+![OpenClaw](https://img.shields.io/badge/OpenClaw-integrated-c0841a)
+![Status](https://img.shields.io/badge/status-practical%20toolkit-334155)
+
 Utilities and skill docs for building OpenClaw-based multimodal workflows across chat channels.
 
 This repository is a cleaned public subset of a real OpenClaw workspace. Private memory files, logs, account identifiers, and local state were removed before publishing.
@@ -17,11 +24,15 @@ This repository is a cleaned public subset of a real OpenClaw workspace. Private
 ## Included Components
 
 - `multimodal-agent.py`
-  Unified entrypoint for image, audio, PDF, Office, archive, and text processing.
+  Compatibility wrapper for the multimodal processor in `scripts/`.
 - `mail-agent.py`
-  IMAP polling, AI reply generation, and optional OpenClaw channel notifications.
+  Compatibility wrapper for the mail automation entrypoint in `scripts/`.
 - `image_sender.py`
-  Channel-specific image delivery helper for generated media.
+  Compatibility wrapper for the image delivery helper in `scripts/`.
+- `scripts/`
+  Actual runnable script implementations kept together in one place.
+- `src/openclaw_multimodal_toolkit/`
+  Lightweight package metadata and module-based CLI entrypoint.
 - `skills/`
   OpenClaw skill docs for multimodal messaging, image generation delivery, and OneBot integration.
 - `deploy/`
@@ -33,15 +44,18 @@ This repository is a cleaned public subset of a real OpenClaw workspace. Private
 
 ```text
 .
+├── assets/
+├── deploy/
+├── docs/
 ├── image_sender.py
 ├── mail-agent.py
 ├── multimodal-agent.py
+├── pyproject.toml
 ├── requirements.txt
-├── .env.example
-├── README.zh-CN.md
-├── docs/
-├── deploy/
-└── skills/
+├── scripts/
+├── src/
+├── skills/
+└── README.zh-CN.md
 ```
 
 ## Requirements
@@ -59,6 +73,12 @@ Install Python dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
+
+Optional editable install:
+
+```bash
+pip install -e .
 ```
 
 Copy environment template:
@@ -124,6 +144,23 @@ Deliver an image:
 python3 image_sender.py /path/to/image.jpg telegram <telegram_user_id> "caption"
 ```
 
+Module-based CLI:
+
+```bash
+python -m openclaw_multimodal_toolkit.cli multimodal voice /path/to/audio.mp3
+python -m openclaw_multimodal_toolkit.cli image-sender /path/to/image.jpg telegram <telegram_user_id>
+```
+
+## Project Positioning
+
+This repository is intentionally positioned as a practical integration toolkit:
+
+- not a generic SDK
+- not a polished framework yet
+- useful as working reference code for OpenClaw-centric automation
+
+It is most valuable if you want to adapt proven scripts, deployment snippets, and skill docs rather than adopt a large abstraction layer.
+
 ## OpenClaw-Specific Assumptions
 
 This toolkit assumes an OpenClaw-style environment in a few places:
@@ -140,6 +177,13 @@ If you want to reuse the scripts outside OpenClaw, expect to patch paths, config
 - This public version intentionally excludes secrets, memory snapshots, queue data, and logs.
 - Notification targets are configured through environment variables instead of hardcoded personal IDs.
 - Review channel-delivery code before using it in another environment with different trust boundaries.
+
+## Related Sections
+
+- [Chinese introduction](README.zh-CN.md)
+- [OpenClaw integration notes](docs/OPENCLAW_INTEGRATION.md)
+- [OneBot skill](skills/openclaw-onebot/SKILL.md)
+- [Deployment examples](deploy/)
 
 ## License
 
